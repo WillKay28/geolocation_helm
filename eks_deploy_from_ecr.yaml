@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: my-geoloc-ecr-eks-app
-        image: 358966077154.dkr.ecr.us-east-1.amazonaws.com/geolocation_ecr_rep:latest
+        image: 358966077154.dkr.ecr.us-east-1.amazonaws.com/geo_ecr_helm_repo:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 8082
@@ -36,7 +36,7 @@ spec:
     app: geoloc-ecr-eks-app
   ports:
   - name: http
-    port: 80
+    port: 8080
     protocol: TCP
     targetPort: 8082
   type: LoadBalancer 
