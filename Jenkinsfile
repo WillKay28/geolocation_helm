@@ -28,6 +28,7 @@ pipeline {
             steps{
                 script{
                     dockerImage = docker.build registry
+                    dockerImage.tag("$BUILD_NUMBER")
                 }
             }
         }
@@ -35,16 +36,15 @@ pipeline {
             steps{
                 script{
                     sh 'aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 358966077154.dkr.ecr.us-east-1.amazonaws.com'
-                    sh 'docker push 358966077154.dkr.ecr.us-east-1.amazonaws.com/geo_ecr_helm_repo:latest'
+                    sh 'docker push 358966077154.dkr.ecr.us-east-1.amazonaws.com/geo_ecr_helm_repo:$BUILD_NUMBER'
                 }
             }
         }
-/*         stage('K8s Deploy'){
+/*         stage('Helm Deploy to K8s'){
             steps {
-                withKubeConfig(caCertificate: '', clusterName: '', contextName: '', credentialsId: 'eks_credential', namespace: '', restrictKubeConfigAccess: false, serverUrl: '') {
-                    sh "kubectl apply -f eks_deploy_from_ecr.yaml"
+                sh ''
                 }
-            }
-        } */
+            } */
+        }
     }
 }
