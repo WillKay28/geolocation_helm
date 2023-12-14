@@ -6,7 +6,7 @@ pipeline {
     environment {
         registry = '358966077154.dkr.ecr.us-east-1.amazonaws.com/geo_ecr_helm_repo'
         //registryCredential = 'ecr:us-east-1:awscreds'
-        dockerimage = ''
+        //dockerimage = ''
     }
     stages {
         stage('Code Checkout'){
