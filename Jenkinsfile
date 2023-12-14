@@ -40,9 +40,9 @@ pipeline {
                 }
             }
         }
-        stage('Helm Deploy to K8s'){
+        stage('Helm Deploy 2 K8s'){
             steps {
-                sh 'helm upgrade geo-1 --install geo_helm_chart --namespace geo-helm-deploy --set image.tag=$BUILD_NUMBER'
+                sh 'helm upgrade geo-first-release --install geo_helm_chart --namespace geo-helm-deploy --set image.tag=$BUILD_NUMBER'
             }
         }
     }
